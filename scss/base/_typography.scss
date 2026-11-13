@@ -1,0 +1,71 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+@import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@900&family=Outfit:wght@300&display=swap");
+
+body {
+  font-family: $font-body;
+  font-weight: $font-weight-light;
+  font-size: $font-size-body;
+  line-height: $line-height-body;
+  color: $color-dark-2;
+  background-color: $color-white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-heading;
+  font-weight: $font-weight-black;
+  color: $color-dark-1;
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: $font-size-h1;
+  line-height: 0.8333;
+  white-space: nowrap;
+
+  @include respond-to("tablet") {
+    font-size: $font-size-h1-tablet;
+    line-height: 1;
+  }
+
+  @include respond-to("desktop") {
+    font-size: $font-size-h1-desktop;
+    line-height: 0.9167;
+  }
+}
+
+h2 {
+  font-size: $font-size-h2;
+  line-height: 0.9;
+
+  @include respond-to("tablet") {
+    font-size: $font-size-h2-tablet;
+    line-height: 0.9091;
+  }
+
+  @include respond-to("desktop") {
+    font-size: $font-size-h2-desktop;
+    line-height: 1;
+  }
+}
+
+h3 {
+  font-size: $font-size-h3;
+  line-height: 1;
+}
+
+p {
+  max-width: 65ch;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

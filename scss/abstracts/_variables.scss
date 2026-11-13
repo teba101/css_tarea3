@@ -1,0 +1,37 @@
+// Colores
+$color-primary: #D5966C;
+$color-dark-1: #151515;
+$color-dark-2: #444444;
+$color-white: #FFFFFF;
+
+// Tipografías
+$font-heading: "Big Shoulders Display", sans-serif;
+$font-body: "Outfit", sans-serif;
+
+$font-weight-black: 900;
+$font-weight-light: 300;
+
+// Tamaños de texto (mobile first; los saltos viven en typography)
+$font-size-body: 1.125rem; // 18px, Body S
+$line-height-body: 1.5556; // 28px
+$font-size-body-lg: 1.375rem; // 22px, Body M
+$line-height-body-lg: 1.4545; // 32px
+
+$font-size-h1: 3.75rem; // 60px
+$font-size-h1-tablet: 4.375rem; // 70px
+$font-size-h1-desktop: 6rem; // 96px
+
+$font-size-h2: 3.125rem; // 50px
+$font-size-h2-tablet: 3.4375rem; // 55px
+$font-size-h2-desktop: 3.75rem; // 60px
+
+$font-size-h3: 2rem; // 32px
+
+// Breakpoints mobile first (min-width).
+$breakpoints: (
+  "tablet": 768px,
+  "desktop": 1440px,
+);
+
+// Interacción
+$transition-base: 250ms ease;

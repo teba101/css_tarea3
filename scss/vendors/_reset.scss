@@ -1,0 +1,28 @@
+/* 1. Usar un modelo de caja predecible */
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  /* 2. Eliminar márgenes y paddings predeterminados del navegador */
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* 3. Hacer que las imágenes y multimedia sean responsivas por defecto */
+  img, picture, svg, video {
+    display: block;
+    max-width: 100%;
+  }
+  
+  /* 4. Heredar tipografías de forma natural en los controles de formularios */
+  input, button, textarea, select {
+    font: inherit;
+  }
+  
+  /* 5. Comportamiento base del documento */
+  body {
+    min-height: 100vh;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }

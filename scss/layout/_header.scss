@@ -1,0 +1,130 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.hero {
+  display: grid;
+
+  @include respond-to("tablet") {
+    // La foto ocupa más de la mitad; el texto se monta unos 3rem sobre ella.
+    // El conjunto mide ~91.5% del ancho, como en el marco de 768.
+    grid-template-columns: 1.33fr 1fr;
+    grid-template-rows: 1fr auto auto 1fr;
+    align-items: stretch;
+    min-height: 43.9375rem;
+  }
+
+  @include respond-to("desktop") {
+    // Panel negro 450px, foto 540px. El hero mide 800px en el marco de 1440.
+    grid-template-columns: 28.125rem 33.75rem minmax(0, 1fr);
+    grid-template-rows: auto;
+    align-items: stretch;
+    min-height: 0;
+  }
+}
+
+.hero__media {
+  overflow: hidden;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 15.0625rem;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  @include respond-to("tablet") {
+    grid-column: 1;
+    grid-row: 1 / -1;
+
+    img {
+      height: 100%;
+      min-height: 0;
+      object-position: center center;
+    }
+  }
+
+  @include respond-to("desktop") {
+    grid-column: 2;
+    grid-row: 1;
+
+    img {
+      height: 50rem;
+      min-height: 0;
+    }
+  }
+}
+
+.hero__panel {
+  padding: 2.5rem 1.5rem 0;
+
+  @include respond-to("tablet") {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: end;
+    position: relative;
+    z-index: 1;
+    margin-left: -3rem;
+    padding: 2rem 2rem 0.75rem 0;
+  }
+
+  @include respond-to("desktop") {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 0;
+    padding: 4rem 0 4rem 10.3125rem;
+    background-color: $color-dark-1;
+    overflow: visible;
+    z-index: 1;
+  }
+
+  h1 {
+    @include respond-to("desktop") {
+      flex: 0 0 auto;
+      width: auto;
+      color: $color-white;
+    }
+  }
+}
+
+.hero__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 1.5rem 1.5rem 0;
+
+  p {
+    max-width: 22rem;
+    font-size: $font-size-body;
+    line-height: $line-height-body;
+  }
+
+  @include respond-to("tablet") {
+    grid-column: 2;
+    grid-row: 3;
+    align-self: start;
+    position: relative;
+    z-index: 1;
+    margin-left: -3rem;
+    padding: 0.75rem 2rem 2rem 0;
+
+    p {
+      font-size: $font-size-body-lg;
+      line-height: $line-height-body-lg;
+    }
+  }
+
+  @include respond-to("desktop") {
+    grid-column: 3;
+    grid-row: 1;
+    align-self: center;
+    justify-content: center;
+    margin-left: -4rem;
+    padding: 2rem 4rem 2rem 0;
+  }
+}

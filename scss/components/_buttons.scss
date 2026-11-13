@@ -1,0 +1,107 @@
+@use "../abstracts/variables" as *;
+
+// Enlace partido: etiqueta + celda de flecha.
+// Primario: etiqueta oscura, flecha con fondo primario.
+// Secundario: etiqueta blanca y texto oscuro, celda de flecha oscura.
+// Hover de ambos: la etiqueta pasa a primario y la flecha a oscuro.
+
+.btn {
+  display: inline-flex;
+  align-items: stretch;
+  height: 4.5rem;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  font-family: $font-body;
+  font-weight: $font-weight-light;
+  font-size: 0.9375rem;
+  line-height: 1;
+  letter-spacing: 0.21em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 4px;
+  }
+
+  &__label,
+  &__icon {
+    display: flex;
+    align-items: center;
+    transition:
+      background-color $transition-base,
+      color $transition-base;
+  }
+
+  &__label {
+    padding-inline: 2rem;
+  }
+
+  &__icon {
+    flex: 0 0 4.5rem;
+    justify-content: center;
+
+    svg {
+      display: block;
+      width: 0.625rem;
+      height: 1.5rem;
+    }
+  }
+
+  &--primary {
+    .btn__label {
+      background-color: $color-dark-1;
+      color: $color-white;
+    }
+
+    .btn__icon {
+      background-color: $color-primary;
+      color: $color-white;
+    }
+  }
+
+  &--secondary {
+    flex-direction: row-reverse;
+
+    .btn__label {
+      background-color: $color-dark-1;
+      color: $color-white;
+    }
+
+    .btn__icon {
+      background-color: $color-primary;
+      color: $color-dark-1;
+
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &:hover,
+  &:focus-visible {
+    .btn__label {
+      background-color: $color-primary;
+      color: $color-dark-1;
+    }
+
+    .btn__icon {
+      background-color: $color-dark-1;
+      color: $color-white;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__label,
+    &__icon {
+      transition: none;
+    }
+  }
+}

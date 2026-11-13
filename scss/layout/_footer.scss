@@ -1,0 +1,142 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.site-footer {
+  display: grid;
+  gap: 2rem;
+  padding: 3.1875rem 1.5rem;
+  background-color: $color-dark-1;
+  color: $color-white;
+
+  @include respond-to("tablet") {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 3.59375rem 2.5rem;
+  }
+
+  @include respond-to("desktop") {
+    gap: 4rem;
+    padding-block: 5.25rem;
+    padding-inline: 10.3125rem;
+  }
+}
+
+.site-footer__logo {
+  display: inline-block;
+  max-width: 13rem;
+  font-family: $font-heading;
+  font-weight: $font-weight-black;
+  font-size: 2.5rem;
+  line-height: 0.9;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: $color-white;
+  transition: color $transition-base;
+
+  &:hover,
+  &:focus-visible {
+    color: $color-primary;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 4px;
+  }
+}
+
+.site-footer address {
+  max-width: 27rem;
+  font-style: normal;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: $color-white;
+}
+
+.site-footer__social {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  list-style: none;
+
+  a {
+    position: relative;
+    display: block;
+    width: 1.25rem;
+    height: 1.25rem;
+    background-color: $color-white;
+    transition: background-color $transition-base;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+
+    img {
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+    }
+
+    &:hover,
+    &:focus-visible {
+      background-color: $color-primary;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-primary;
+      outline-offset: 4px;
+    }
+  }
+
+  li:nth-child(1) a {
+    -webkit-mask-image: url("../assets/icons/facebook.svg");
+    mask-image: url("../assets/icons/facebook.svg");
+  }
+
+  li:nth-child(2) a {
+    -webkit-mask-image: url("../assets/icons/instagram.svg");
+    mask-image: url("../assets/icons/instagram.svg");
+  }
+
+  li:nth-child(3) a {
+    -webkit-mask-image: url("../assets/icons/twitter.svg");
+    mask-image: url("../assets/icons/twitter.svg");
+  }
+}
+
+.site-footer--gold {
+  background-color: $color-primary;
+  color: $color-dark-1;
+
+  @include respond-to("tablet") {
+    padding-block: 3.53125rem;
+  }
+
+  @include respond-to("desktop") {
+    padding-block: 5.25rem;
+  }
+
+  .site-footer__logo {
+    color: $color-dark-1;
+
+    &:hover,
+    &:focus-visible {
+      color: $color-white;
+    }
+  }
+
+  address {
+    color: $color-dark-1;
+  }
+
+  .site-footer__social a {
+    background-color: $color-dark-1;
+
+    &:hover,
+    &:focus-visible {
+      background-color: $color-white;
+    }
+  }
+}

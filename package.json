@@ -1,0 +1,19 @@
+{
+  "name": "template_sass",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "sass --watch scss/main.scss css/style.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "sass": "^1.108.1"
+  },
+  "allowScripts": {
+    "@parcel/watcher@2.6.0": true
+  }
+}

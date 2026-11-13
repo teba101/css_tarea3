@@ -1,0 +1,75 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.location__map {
+  position: relative;
+  width: 100%;
+  height: 34.3125rem;
+  overflow: hidden;
+  background-color: #c8c8c8;
+
+  img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  @include respond-to("tablet") {
+    height: 37.5rem;
+  }
+}
+
+.location__back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.location__info {
+  display: grid;
+  gap: 1.25rem;
+  padding: 2rem 1.5rem;
+  background-color: $color-dark-1;
+  color: $color-white;
+
+  h1 {
+    color: $color-white;
+  }
+
+  @include respond-to("tablet") {
+    grid-template-columns: minmax(0, 0.62fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 2rem 3rem;
+    padding: 5rem 2.5rem;
+  }
+
+  @include respond-to("desktop") {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 8.375rem 10.3125rem;
+  }
+}
+
+.location__details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+
+  h2 {
+    color: $color-primary;
+    font-size: 2.25rem;
+    line-height: 1;
+  }
+
+  address,
+  p {
+    max-width: 28rem;
+    font-style: normal;
+    color: $color-white;
+  }
+}

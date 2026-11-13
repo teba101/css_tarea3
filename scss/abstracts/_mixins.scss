@@ -1,0 +1,22 @@
+@use "sass:map";
+@use "variables" as var;
+
+/// Aplica estilos desde un breakpoint hacia arriba (mobile first).
+/// @param {String} $breakpoint - Clave de $breakpoints: "tablet" | "desktop".
+/// @example scss
+///   .hero {
+///     padding: 1.5rem;
+///
+///     @include respond-to("tablet") {
+///       padding: 2.5rem;
+///     }
+///   }
+@mixin respond-to($breakpoint) {
+  @if not map.has-key(var.$breakpoints, $breakpoint) {
+    @error "El breakpoint `#{$breakpoint}` no existe. Usa: #{map.keys(var.$breakpoints)}.";
+  }
+
+  @media (min-width: map.get(var.$breakpoints, $breakpoint)) {
+    @content;
+  }
+}
