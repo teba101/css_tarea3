@@ -1,26 +1,30 @@
 @use "../abstracts/variables" as *;
 
-// Enlace partido: etiqueta + celda de flecha.
-// Primario: etiqueta oscura, flecha con fondo primario.
-// Secundario: etiqueta blanca y texto oscuro, celda de flecha oscura.
-// Hover de ambos: la etiqueta pasa a primario y la flecha a oscuro.
+// Enlace partido: etiqueta + celda de flecha (.btn__label y .btn__icon).
+// Primario ("Our location"): etiqueta oscura y texto blanco, flecha sobre primario.
+// Secundario ("Back to home"), según el PDF: etiqueta oscura y texto blanco,
+// celda primaria con la flecha en oscuro, apuntando a la izquierda.
+// Hover: el fondo de la etiqueta y el de la celda se intercambian.
 
 .btn {
   display: inline-flex;
   align-items: stretch;
   height: 4.5rem;
+  margin: 0;
   border: 0;
   padding: 0;
   background-color: transparent;
-  font-family: $font-body;
-  font-weight: $font-weight-light;
-  font-size: 0.9375rem;
+  color: inherit;
+  font-family: $font-heading;
+  font-weight: $font-weight-black;
+  font-size: 1.25rem;
   line-height: 1;
-  letter-spacing: 0.21em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
+  transition: all 0.3s ease;
 
   &:focus {
     outline: none;
@@ -35,9 +39,7 @@
   &__icon {
     display: flex;
     align-items: center;
-    transition:
-      background-color $transition-base,
-      color $transition-base;
+    transition: all 0.3s ease;
   }
 
   &__label {
@@ -69,6 +71,8 @@
 
   &--secondary {
     flex-direction: row-reverse;
+    background-color: transparent;
+    color: $color-dark-1;
 
     .btn__label {
       background-color: $color-dark-1;
@@ -99,6 +103,7 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
+    &,
     &__label,
     &__icon {
       transition: none;

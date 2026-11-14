@@ -1,5 +1,4 @@
-@use "../abstracts/variables" as *;
-@use "../abstracts/mixins" as *;
+@use '../abstracts' as *;
 
 .location__map {
   position: relative;
@@ -17,7 +16,7 @@
     object-position: center;
   }
 
-  @include respond-to("tablet") {
+  @include respond-to('tablet') {
     height: 37.5rem;
   }
 }
@@ -40,14 +39,14 @@
     color: $color-white;
   }
 
-  @include respond-to("tablet") {
+  @include respond-to('tablet') {
     grid-template-columns: minmax(0, 0.62fr) minmax(0, 1fr);
     align-items: center;
     gap: 2rem 3rem;
     padding: 5rem 2.5rem;
   }
 
-  @include respond-to("desktop") {
+  @include respond-to('desktop') {
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     padding: 8.375rem 10.3125rem;

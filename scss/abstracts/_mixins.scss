@@ -1,22 +1,25 @@
 @use "sass:map";
+@use "sass:meta";
 @use "variables" as var;
 
 /// Aplica estilos desde un breakpoint hacia arriba (mobile first).
-/// @param {String} $breakpoint - Clave de $breakpoints: "tablet" | "desktop".
-/// @example scss
-///   .hero {
-///     padding: 1.5rem;
-///
-///     @include respond-to("tablet") {
-///       padding: 2.5rem;
-///     }
-///   }
+/// Soporta tanto claves del mapa de variables como valores directos (px/rem).
+/// @param {String|Number} $breakpoint - Clave ('tablet', 'desktop') o valor (900px).
 @mixin respond-to($breakpoint) {
-  @if not map.has-key(var.$breakpoints, $breakpoint) {
-    @error "El breakpoint `#{$breakpoint}` no existe. Usa: #{map.keys(var.$breakpoints)}.";
-  }
-
-  @media (min-width: map.get(var.$breakpoints, $breakpoint)) {
-    @content;
+  // Opción 1: Si pasas una clave que existe en el mapa de variables
+  @if map.has-key(var.$breakpoints, $breakpoint) {
+    @media (min-width: map.get(var.$breakpoints, $breakpoint)) {
+      @content;
+    }
+  } 
+  // Opción 2: Si pasas directamente un valor numérico (ej: 850px)
+  @else if meta.type-of($breakpoint) == number {
+    @media (min-width: $breakpoint) {
+      @content;
+    }
+  } 
+  // Si no es ninguna de las dos cosas, lanzamos un error descriptivo
+  @else {
+    @error "El breakpoint `#{$breakpoint}` no es válido. Usa una clave del mapa (#{map.keys(var.$breakpoints)}) o un valor numérico en px/rem.";
   }
 }
